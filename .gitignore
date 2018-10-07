@@ -107,4 +107,5 @@ venv.bak/
 .DS_Store
 
 # Project specific
-output*.html
+chart*.html
+

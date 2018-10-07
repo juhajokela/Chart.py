@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 from string import Template
 
 
@@ -64,6 +65,14 @@ class BaseChart(object):
 
     def as_page(self):
         return template_page.substitute(content=self.as_html())
+
+    def save_as_html(self, filename=''):
+        timestamp = datetime.utcnow().isoformat()
+        filename = (
+            filename or 'chart_{timestamp}.html'.format(timestamp=timestamp)
+        )
+        with open(filename, 'w') as f:
+            f.write(self.as_page())
 
 
 class MixedChart(BaseChart):
